@@ -1,13 +1,6 @@
-<?php 
-            
-            return $conn;
-        } catch( PDOException $e ) {
-            echo $e->getMessage();
-            echo "Kon geen verbinding maken";
-        }
-    }
+<?php
     function getHeader() {
-        return "Dit is de header";
+        return "Dit is de fietsen pagina";
     }
     function getFooter() {
         return "Dit is de footer";
@@ -38,10 +31,7 @@
         $section = "";
         switch($page){
             case "home":
-                $section = "Dit is de inhoud van de home pagina.
-                <br><br><br>Welkom
-                <br><br><br>Welkom
-                <br><br><br>Welkom";
+                $section = "Dit is de inhoud van de fietsen pagina.";
                 break;
             case "fietsen":
                 $fietsen = getFietsen();
@@ -58,21 +48,4 @@
         }
         return $section;
     }
-    function getFietsen() {
-        $conn=DBconnect();
-        $query = "SELECT * FROM fietsen";
-        $stmt = $conn->prepare($query);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $fietsen = $stmt->fetchall();
-        return $fietsen;
-    }
-    function showFietsen($fietsen) {
-        $overzichtFietsen = "";
-        foreach($fietsen as $fiets){
-            $overzichtFietsen .=$fiets['merk'] . " - " . $fiets['type'] . "<br>";
-        }
-        return $overzichtFietsen;
-    }
-
 ?>
