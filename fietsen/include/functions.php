@@ -1,5 +1,4 @@
 <?php 
-            
     function getHeader() {
         return "Dit is de header";
     }
