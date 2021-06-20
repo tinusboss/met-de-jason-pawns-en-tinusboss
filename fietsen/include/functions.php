@@ -1,5 +1,4 @@
 <?php 
-            
     function getHeader() {
         return "Dit is de header";
     }
@@ -54,7 +53,7 @@
     }
     function getFietsen() {
         $conn=DBconnect();
-        $query = "SELECT * FROM fietsen";
+        $query = "SELECT * FROM fietsenwinkel";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
