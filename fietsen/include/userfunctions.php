@@ -22,8 +22,28 @@
     }
 
     function checkUser($username){
-        
+        if($username <> "")}
+        if($username <> ""){
+        $conn=dbConnect();
+        $sql = "select * from gebruikers where username" g
+        $sql = "SELECT * FROM gebruikers WHERE username='$username'" 
+        $stmt = $conn->prepare($sql)
+        $stmt->execute();
+        $stmt->setFetchMode (PDO::FETCH_ASSOC);
+        $users = $stmt->fetchAll();
+        foreach($users as $user){
+            if($username == $user ['username']){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
     }
+    else{
+        return false;
+    }
+}
 
     function checkUserPassword($username, $password){
         if(($username <> "") && ($password <> "")){
