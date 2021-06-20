@@ -9,11 +9,13 @@
 </head>
 
 <body>
+
     <h1>Registreren</h1>
     <form method='post' action="">
         <label>Username</label>
         <input type="text" name="username" required /><br>
 
+        <label>Password</label>
         <input type="password" name="password" required /><br>
         <input type="submit" name="register" value="register" /><br>
     </form>
@@ -27,5 +29,10 @@
 </html>
 
 <?php
+session_start();
+include("../../formfunctions.php");
+include("../../pagefunctions.php");
+include("../../userfunctions.php");
+include("../../fietsfunctions.php");
 
 ?>

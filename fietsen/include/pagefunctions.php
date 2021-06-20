@@ -1,17 +1,34 @@
 <?php
     function getHeader() {
-        return "Dit is de fietsen pagina";
+        $header =  "Dit is de fietsen pagina";
+        if($_SESSION['login']){
+            $username = $_SESSION['username'];
+            $role = $_SESSION['role'];
+            $header .=" - Welkom: $username ($role)";
+        }
+        return $header;
     }
     function getFooter() {
         return "Dit is de footer";
     }
     function getNav() {
         $menu = "<a href='index.php'>Home</a>";
-        $menu .= "<a href='fietsen.php?>page=Fietsen'>Fietsen</a>";
-        $menu .= "<a href='index.php?>page=menu'>Menu2</a>";
-        $menu .= "<a href='index.php?>page=fietsen'>Fietsen</a>";
-        $menu .= "<a href='index.php?>page=test'>Test</a>";
-        $menu .= "<a href='index.php?>page=inloggen'>Inloggen</a>";
+        if(checkRole(1)){
+            $menu .= "<a href='index.php?page=fietsen'>Fietsen</a>";
+        }
+        if(checkRole(2)){
+            $menu .= "<a href='index.php?page=bestellen'>Bestellen</a>";
+        }
+        if(checkRole(8)){
+            $menu .= "<a href='index.php?page=adminmenu'>Admin menu</a>";
+            $menu .= "<a href='index.php?>page=test'>Test</a>";
+        }
+       if($_SESSION['login']){
+        $menu .= "<a href='include/html/user/login.php?>page=inloggen'>Inloggen</a>";
+       }else{
+        $menu .= "<a href='index.php?>page=uitoggen'>Uitloggen</a>";
+       }
+       
 
         return $menu;
     }
@@ -48,4 +65,3 @@
         }
         return $section;
     }
-?>

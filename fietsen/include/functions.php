@@ -8,10 +8,10 @@
     function getNav() {
         $menu = "<a href='index.php'>Home</a>";
         $menu .= "<a href='fietsen.php?>page=Fietsen'>Fietsen</a>";
-        $menu .= "<a href='index.php?>page=menu'>Menu2</a>";
-        $menu .= "<a href='index.php?>page=fietsen'>Fietsen</a>";
+        $menu .= "<a href='index.php?>page=menu'>bestellen</a>";
+        $menu .= "<a href='index.php?>page=fietsen'>Admin menu</a>";
         $menu .= "<a href='index.php?>page=test'>Test</a>";
-        $menu .= "<a href='index.php?>page=inloggen'>Inloggen</a>";
+        $menu .= "<a href='include/html/user/login.html?>page=inloggen'>Inloggen</a>";
 
         return $menu;
     }
@@ -51,21 +51,3 @@
         }
         return $section;
     }
-    function getFietsen() {
-        $conn=DBconnect();
-        $query = "SELECT * FROM fietsenwinkel";
-        $stmt = $conn->prepare($query);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $fietsen = $stmt->fetchall();
-        return $fietsen;
-    }
-    function showFietsen($fietsen) {
-        $overzichtFietsen = "";
-        foreach($fietsen as $fiets){
-            $overzichtFietsen .=$fiets['merk'] . " - " . $fiets['type'] . "<br>";
-        }
-        return $overzichtFietsen;
-    }
-
-?>
