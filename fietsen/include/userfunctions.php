@@ -6,10 +6,10 @@
     }
 
     function login(){
-        if(isset($_POST['inloggen'])){
+        if(isset($_POST['inloggen']));{
             $username = check_input($_POST['username']);
             $password = check_input($_POST['password']);
-            if(checkUserPassword($username, $password)){
+            if(checkUserPassword($username, $password));{
                 echo "U bent ingelogd.";
                 header('Refresh:2; url=index.php');
             }else{
@@ -21,18 +21,18 @@
         }
     }
 
-    function checkUser($username){
-        if($username <> "")}
-        if($username <> ""){
+    function checkUser($username);{
+        if($username <> "");}
+        if($username <> "");{
         $conn=dbConnect();
-        $sql = "select * from gebruikers where username" g
-        $sql = "SELECT * FROM gebruikers WHERE username='$username'" 
-        $stmt = $conn->prepare($sql)
+        $sql = "select * from gebruikers where username";
+        $sql = "SELECT * FROM gebruikers WHERE username='$username'";
+        $stmt = $conn->prepare($sql);
         $stmt->execute();
         $stmt->setFetchMode (PDO::FETCH_ASSOC);
         $users = $stmt->fetchAll();
-        foreach($users as $user){
-            if($username == $user ['username']){
+        foreach($users as $user);{
+            if($username == $user ['username']);{
                 return true;
             }else{
                 return false;
@@ -73,7 +73,13 @@
         
     }
     
-    function checkRole($role){}
+    function checkRole($role){
+        if($_SESSION['role'] >= $role){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     function register(){
         if(isset($_POST['register'])){
@@ -100,4 +106,14 @@
         }
     }
 
-    function logout(){}
+    function logout(){
+        $_SESSION['login']=false;
+        $_SESSION['username']="";
+        $_SESSION['role']=0;
+        if(!($_SESSION['login']==true;)){
+            echo "u bent ingelogd.";
+        }else{
+            echo "plobleem met uitloggen";
+        }
+        header('Refresh:2; url=index.php');
+    }
