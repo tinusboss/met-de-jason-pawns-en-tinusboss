@@ -15,5 +15,14 @@
         }
         return $overzichtFietsen;
     }
+    function getFiets($fietsen) {
+       
+    }
+    function editFiets($fietsen) {
+       
+    }
+    function deleteFiets($fietsen) {
+       
+    }
 
 ?>

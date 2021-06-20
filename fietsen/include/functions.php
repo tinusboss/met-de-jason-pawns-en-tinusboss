@@ -1,11 +1,5 @@
 <?php 
             
-            return $conn;
-        } catch( PDOException $e ) {
-            echo $e->getMessage();
-            echo "Kon geen verbinding maken";
-        }
-    }
     function getHeader() {
         return "Dit is de header";
     }

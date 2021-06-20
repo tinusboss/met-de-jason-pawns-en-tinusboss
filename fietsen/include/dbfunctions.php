@@ -6,16 +6,16 @@
     include_once("../fietsen/include/userfunctions.php");
     include_once("../fietsen/include/fietsenfunctions.php");
 
-    include("include/layout.php")
+    include("include/layout.php");
 
     function dBConnect() {
 
-        if ($_SERVER['SERVER_NAME'] == "localhost"){
+    if ($_SERVER['SERVER_NAME'] == "localhost"){
             
             DEFINE( "USER", "ROOT");
             DEFINE( "PASSWORD", "");
-            DEFINE( "HOST", "localhost");
             DEFINE( "DBNAME", "fietsenwinkel");
+            DEFINE( "HOST", "localhost");
         } else {
 
             DEFINE( "USER", "157472.ao-alkmaar.nl/fietsenwinkel");
@@ -36,6 +36,3 @@
         }
 
     }
-
-
-?>
