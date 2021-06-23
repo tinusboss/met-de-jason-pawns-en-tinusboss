@@ -25,24 +25,51 @@ function login()
 function checkUser($username)
 {
     if ($username <> "") {
-        if ($username <> "") {
-            $conn = dbConnect();
-            $sql = "SELECT * FROM gebruikers WHERE username='$username'";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $users = $stmt->fetchAll();
-            foreach ($users as $user) {
-                if ($username == $user['username']) {
-                    return true;
-                } else {
-                    return false;
-                }
+        $conn = dbConnect();
+        $sql = "select * from gebruikers where username";
+        $sql = "SELECT * FROM gebruikers WHERE username='$username'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $users = $stmt->fetchAll();
+        foreach ($users as $user) {
+            if ($username == $user['username']) {
+                return true;
+            } else {
+                return false;
             }
-        } else {
-            return false;
         }
+    } else {
+        return false;
     }
+}
+
+function getSection()
+{
+    $page = getPage();
+    $section = "";
+    switch ($page) {
+        case "home";
+        case "fietsen";
+        case "adminmenu";
+        case "showFiets";
+        case "editFiets";
+        case "delFiets";
+        case "addFiets";
+        case "inloggen";
+            $section = login();
+            break;
+        case "registreren";
+            $section = register();
+            break;
+        case "uitloggen";
+            $section = logout();
+            break;
+        case "bestellen";
+        case "test":
+        default:
+    }
+    return $section;
 }
 
 function checkUserPassword($username, $password)
@@ -71,10 +98,11 @@ function checkUserPassword($username, $password)
     }
 }
 
-function checkRole($role){
-    if($_SESSION['role'] >= $role){
+function checkRole($role)
+{
+    if ($_SESSION['role'] >= $role) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
@@ -114,7 +142,8 @@ function logout()
     if (!($_SESSION['login'] == true)) {
         echo "u bent ingelogd.";
     } else {
-        echo "plobleem met uitloggen";
+        echo "probleem met uitloggen";
     }
     header('Refresh:2; url=index.php');
 }
+
