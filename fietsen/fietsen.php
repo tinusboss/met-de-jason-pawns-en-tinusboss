@@ -4,5 +4,7 @@
 
     include("include/pagefunctions.php");
 
+    include("include/fietsfunctions.php");
+
     include("include/fietsenlayout.php");
 ?>

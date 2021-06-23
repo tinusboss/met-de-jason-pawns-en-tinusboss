@@ -28,17 +28,13 @@
     }
     function getSection() {
         $page = getPage();
-        $section = "";
+        $section = "Dit is de inhoud van de fietsen pagina";
         switch($page){
             case "home":
                 $section = "Dit is de inhoud van de home pagina.
                 <br><br><br>Welkom
                 <br><br><br>Welkom
                 <br><br><br>Welkom";
-                break;
-            case "fietsen":
-                $fietsen = getFietsen();
-                $section = showFietsen($fietsen);
                 break;
             case "inloggen":
                 $section = "Dit is de inhoud van de inlog pagina.";

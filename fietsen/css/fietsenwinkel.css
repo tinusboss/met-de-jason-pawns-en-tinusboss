@@ -75,3 +75,33 @@ footer {
   text-align: center;
   justify-content: center;
 }
+
+.fietsen {
+  width: 31%;
+  height: 123px;
+  border-style: groove;
+  margin-top: 1%;
+  margin-left: 1%;
+  margin-bottom: 2%;
+  border-color: #fff;
+  background-color: rgba(242, 248, 255, 0.938);
+}
+
+.list-group > li {
+  margin: 0%;
+  width: 100%;
+  border-style: groove;
+  background-color: #000;
+  border-color: #fff;
+  color: rgb(23, 70, 122);
+  list-style-type: none;
+  padding: 17px;
+}
+
+.p1 {
+  text-align: center;
+  font-weight: normal;
+  font-family: Verdana;
+  font-size: medium;
+  color: #fff;
+}
