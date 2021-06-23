@@ -2,7 +2,7 @@
 <?php 
     session_start();
 
-    include("../fietsen/include/pagefunctions.php");
+    include("include/pagefunctions.php");
 
-    include("../fietsen/include/fietsenlayout.php");
+    include("include/fietsenlayout.php");
 ?>

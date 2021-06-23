@@ -22,7 +22,7 @@
 
     <p>---</p>
     <p>Als u al een account hebt kunt u hier inloggen.
-        <a href="index.php?page=inloggen">Inloggen</a>
+        <a href="login.php?page=inloggen">Inloggen</a>
     </p>
 </body>
 

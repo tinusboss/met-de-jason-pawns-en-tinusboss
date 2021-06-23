@@ -11,7 +11,7 @@
         $menu .= "<a href='index.php?>page=menu'>bestellen</a>";
         $menu .= "<a href='index.php?>page=fietsen'>Admin menu</a>";
         $menu .= "<a href='index.php?>page=test'>Test</a>";
-        $menu .= "<a href='include/html/user/login.html?>page=inloggen'>Inloggen</a>";
+        $menu .= "<a href='include/html/user/login.php?>page=inloggen'>Inloggen</a>";
 
         return $menu;
     }

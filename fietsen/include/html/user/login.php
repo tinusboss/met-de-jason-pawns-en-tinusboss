@@ -21,17 +21,16 @@
     </form>
     <p>- - -</p>
     <p>Heeft u nog geen account dan kunt u zich hier registreren.
-        <a href="index.php?page=registreren">registreren</a>
+        <a href="register.php?page=registreren">registreren</a>
     </p>
 </body>
 
 </html>
 <?php
-session_start();
-include("../fietsen/include/dbfunctions.php");
-include("../fietsen/include/formfunctions.php");
-include("../fietsen/include/pagefunctions.php");
-include("../fietsen/include/userfunctions.php");
-include("../fietsen/include/fietsenfunctions.php");
+include("../../dbfunctions.php");
+include("../../formfunctions.php");
+include("../../pagefunctions.php");
+include("../../userfunctions.php");
+include("../../fietsfunctions.php");
 
 ?>
