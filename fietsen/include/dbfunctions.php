@@ -13,16 +13,16 @@ function dBConnect()
 
     if ($_SERVER['SERVER_NAME'] == "localhost") {
 
-        DEFINE("USER", "ROOT");
-        DEFINE("PASSWORD", "");
-        DEFINE("DBNAME", "fietsenwinkel");
-        DEFINE("HOST", "localhost");
+        // DEFINE("USER", "ROOT");
+        // DEFINE("PASSWORD", "");
+        // DEFINE("DBNAME", "fietsenwinkel");
+        // DEFINE("HOST", "localhost");
     } else {
 
-        // DEFINE("USER", "157472.ao-alkmaar.nl/fietsenwinkel");
-        // DEFINE("PASSWORD", "fietsenwinkel");
-        // DEFINE("HOST", "localhost");
-        // DEFINE("DBNAME", "fietsenwinkel");
+        DEFINE("USER", "s157472_fietsenwinkel");
+        DEFINE("PASSWORD", "fietsen");
+        DEFINE("HOST", "'s157472.ao-alkmaar/fietsenwinkel'");
+        DEFINE("DBNAME", "s157472_fietsenwinkel");
     }
 
     try {

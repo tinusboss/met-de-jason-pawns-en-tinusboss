@@ -27,7 +27,6 @@ function checkUser($username)
     if ($username <> "") {
         if ($username <> "") {
             $conn = dbConnect();
-            $sql = "select * from gebruikers where username";
             $sql = "SELECT * FROM gebruikers WHERE username='$username'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -73,7 +72,11 @@ function checkUserPassword($username, $password)
 }
 
 function checkRole($role){
-    
+    if($_SESSION['role'] >= $role){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function register()
@@ -89,8 +92,8 @@ function register()
             $stmt = $conn->prepare("INSERT INTO gebruikers (username, password, role) VALUES (:username, :password :role)");
 
             $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password', $passwordHash);
-            $stmt->bindParam(':role', $role);
+            $stmt->bindParam(':password');
+            $stmt->bindParam(':role');
 
             $username = check_input($_POST['username']);
             $password = check_input($_POST['password']);
