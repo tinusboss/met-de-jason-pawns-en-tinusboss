@@ -1,14 +1,5 @@
 <?php
-function getHeader()
-{
-    $header =  "Dit is de fietsen pagina";
-    if ($_SESSION['login']) {
-        $username = $_SESSION['username'];
-        $role = $_SESSION['role'];
-        $header .= " - Welkom: $username ($role)";
-    }
-    return $header;
-}
+
 function getFooter()
 {
     return "Dit is de footer";
@@ -79,7 +70,7 @@ function getSection()
             $section = "Dit is de inhoud van de inlog pagina.";
             break;
         case "test":
-            include("inlude/html/test/html");
+            include("../index.php");
             break;
         default;
             $section = "Deze pagina bestaat niet";

@@ -8,14 +8,14 @@ function showFietsen($fietsen)
 { 
     {
         // xampp datebase
-        $dsn = "mysql:host=localhost;dbname=fietsenwinkel";
-        $username = "root";
-        $password = "";
+        // $dsn = "mysql:host=localhost;dbname=fietsenwinkel";
+        // $username = "root";
+        // $password = "";
 
         // ao-alkmaar datebase 
-        // $dsn = "mysql:host=localhost;dbname=s157472_fietsenwinkel";
-        // $username = "s157472_fietsenwinkel";
-        // $password = "fietsen";
+        $dsn = "mysql:host=localhost;dbname=s157472_fietsenwinkel";
+        $username = "s157472_fietsenwinkel";
+        $password = "fietsen";
 
         // Verbinding maken met de PDO-class, en een table maken met alle informaties die vanuit datebase (schepen) opgehaald zijn.
         try {

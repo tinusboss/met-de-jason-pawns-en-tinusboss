@@ -1,4 +1,14 @@
 <?php
+function getHeader()
+{
+    $header =  "U bent ingelogd ";
+    if ($_SESSION['login']) {
+        $username = $_SESSION['username'];
+        $role = $_SESSION['role'];
+        $header .= " - Welkom: $username ($role)";
+    }
+    return $header;
+}
 if (!isset($_SESSION['login'])) {
     $_SESSION['login'] = false;
     $_SESSION['username'] = "";
@@ -25,9 +35,9 @@ function login()
 function checkUser($username)
 {
     if ($username <> "") {
-        $conn = dbConnect();
-        $sql = "select * from gebruikers where username";
-        $sql = "SELECT * FROM gebruikers WHERE username='$username'";
+        $conn = include('dbfunctions.php');
+        $sql = "select * from admin where username";
+        $sql = "SELECT * FROM admin WHERE username='$username'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -75,8 +85,8 @@ function getSection()
 function checkUserPassword($username, $password)
 {
     if (($username <> "") && ($password <> "")) {
-        $conn = dBConnect();
-        $sql = "SELECT * FROM gebruikers WHERE username='$username'";
+        $conn = include('dbfunctions.php');
+        $sql = "SELECT * FROM admin WHERE username='$username'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -116,12 +126,12 @@ function register()
             echo "Gebruiker bestaal al.";
             header('Refresh:5 url=index.php?page=registreren');
         } else {
-            $conn = dBConnect();
+            $conn = include('dbfunctions.php');
             $stmt = $conn->prepare("INSERT INTO gebruikers (username, password, role) VALUES (:username, :password :role)");
 
             $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password');
-            $stmt->bindParam(':role');
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':role',$role);
 
             $username = check_input($_POST['username']);
             $password = check_input($_POST['password']);

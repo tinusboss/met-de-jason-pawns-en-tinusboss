@@ -1,6 +1,6 @@
 <?php 
     function getHeader() {
-        return "Dit is de header";
+        return "Dit is de Home pagina";
     }
     function getFooter() {
         return "Dit is de footer";
