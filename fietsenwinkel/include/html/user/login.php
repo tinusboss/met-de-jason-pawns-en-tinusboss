@@ -49,7 +49,7 @@
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
-                echo '<script>window.location.replace("../../../indexx.php");</script>';
+                echo '<script>window.location.replace("../../../crud/read.php");</script>';
             } else {
                 //$validPassword was FALSE. Wachtwoord die matcht niet
                 echo '<script>alert("Foute gebruikersnaam of wachtwoord")</script>';

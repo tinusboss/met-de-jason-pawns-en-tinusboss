@@ -76,7 +76,7 @@ function getSection()
             $section = showFietsen($fietsen);
             break;
         case "inloggen":
-            $section = "Dit is de inhoud van de inlog pagina.";
+            $section = "";
             break;
         case "test":
             include("../index.php");
