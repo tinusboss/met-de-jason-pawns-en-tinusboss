@@ -1,5 +1,14 @@
 <?php
-
+function getHeader()
+{
+    $header =  "Dit is de fietsen pagina";
+    if ($_SESSION['login']) {
+        $username = $_SESSION['username'];
+        $role = $_SESSION['role'];
+        $header .= " - Welkom: $username ($role)";
+    }
+    return $header;
+}
 function getFooter()
 {
     return "Dit is de footer";

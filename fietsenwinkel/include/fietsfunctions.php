@@ -55,14 +55,4 @@ function showFietsen($fietsen)
     }
 }
 
-function getFiets($id)
-{
-}
 
-function editFiets($id)
-{
-}
-
-function deleteFiets($id)
-{
-}
