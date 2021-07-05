@@ -70,7 +70,7 @@ function getSection()
             
             break;
         case "inloggen":
-            $section = "Dit is de inhoud van de inlog pagina.";
+            $section = "";
             break;
         case "fietsen":
             include('fietsfunctions.php');
