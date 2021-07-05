@@ -12,21 +12,17 @@
 <body>
 <h1>Login</h1>
        <?php
-    define('BASEPATH', true);
-    require '../../dbfunctions.php';
-
+    include('../../dbfunctions.php');
     if (isset($_POST['submit'])) {
         // try {
-        $dsn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
-        $dsn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn = dbConnect();
 
         //kijken of niet alles leeg is
         $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
         $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
 
         $sql = "SELECT id, username, password FROM admin WHERE username = :username";
-        $stmt = $pdo->prepare($sql);
-
+        $stmt = $conn->prepare($sql);
         //Bind value.
         $stmt->bindValue(':username', $username);
 
@@ -49,7 +45,7 @@
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
-                echo '<script>window.location.replace("../../../crud/read.php");</script>';
+                echo '<script>window.location.replace("../../../index.php");</script>';
             } else {
                 //$validPassword was FALSE. Wachtwoord die matcht niet
                 echo '<script>alert("Foute gebruikersnaam of wachtwoord")</script>';
