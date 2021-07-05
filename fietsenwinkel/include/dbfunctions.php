@@ -1,22 +1,31 @@
 <?php
 
-defined('BASEPATH') or exit('No direct script access allowed'); //prevent direct script access
-$host = 'localhost';
-$user = 's157472_fietsenwinkel'; //database naam
-$password = 'fietsen'; //database wachtwoord
-$dbname = 's157472_fietsenwinkel'; //database naam
-$dsn = '';
-// $host = 'localhost';
-// $user = 'root'; //database naam
-// $password = ''; //database wachtwoord
-// $dbname = 'bestevaer'; //database naam
-// $dsn = '';
+function dBConnect() {
 
-try {
-    $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
+    // if ($_SERVER['SERVER_NAME'] == "localhost"){
+        
+    //     DEFINE( "USER", "root");
+    //     DEFINE( "PASSWORD", "");
+    //     DEFINE( "HOST", "localhost");
+    //     DEFINE( "DBNAME", "fietsenwinkel");
+    // } 
+    if {
 
-    $pdo = new PDO($dsn, $user, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo 'connection failed: ' . $e->getMessage();
+        DEFINE( "USER", "157947.ao-alkmaar.nl/fietsenwinkel");
+        DEFINE( "PASSWORD", "fietsenwinkel");
+        DEFINE( "HOST", "localhost");
+        DEFINE( "DBNAME", "fietsenwinkel");
+    }
+
+    try {
+        $connString = "mysql:host=" . HOST . ";dbname=" . DBNAME;
+        $conn = new PDO( "$connString" , USER, PASSWORD );
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        return $conn;
+    } catch( PDOException $e ) {
+        echo $e->getMessage();
+        echo "Kon geen verbinding maken";
+    }
+
 }
