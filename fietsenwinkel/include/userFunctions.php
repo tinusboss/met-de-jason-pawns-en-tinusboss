@@ -1,14 +1,4 @@
 <?php
-function getHeader()
-{
-    $header =  "U bent ingelogd ";
-    if ($_SESSION['login']) {
-        $username = $_SESSION['username'];
-        $role = $_SESSION['role'];
-        $header .= " - Welkom: $username ($role)";
-    }
-    return $header;
-}
 if (!isset($_SESSION['login'])) {
     $_SESSION['login'] = false;
     $_SESSION['username'] = "";
@@ -35,7 +25,7 @@ function login()
 function checkUser($username)
 {
     if ($username <> "") {
-        $conn = include('dbfunctions.php');
+        $conn= dbConnect();
         $sql = "select * from admin where username";
         $sql = "SELECT * FROM admin WHERE username='$username'";
         $stmt = $conn->prepare($sql);
@@ -54,33 +44,6 @@ function checkUser($username)
     }
 }
 
-function getSection()
-{
-    $page = getPage();
-    $section = "";
-    switch ($page) {
-        case "home";
-        case "fietsen";
-        case "adminmenu";
-        case "showFiets";
-        case "editFiets";
-        case "delFiets";
-        case "addFiets";
-        case "inloggen";
-            $section = login();
-            break;
-        case "registreren";
-            $section = register();
-            break;
-        case "uitloggen";
-            $section = logout();
-            break;
-        case "bestellen";
-        case "test":
-        default:
-    }
-    return $section;
-}
 
 function checkUserPassword($username, $password)
 {
@@ -136,7 +99,6 @@ function register()
             $username = check_input($_POST['username']);
             $password = check_input($_POST['password']);
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-            $role = 1;
         }
     } else {
         include("include/html/user/register.html");

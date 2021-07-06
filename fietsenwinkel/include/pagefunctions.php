@@ -17,13 +17,11 @@ function getNav()
 {
         $menu = "<a href='index.php'>Home</a>";
         $menu .= "<a href='index.php?page=fietsen'>Fietsen</a>";
-        $menu .= "<a href='index.php?page=bestellen'>Bestellen</a>";
         $menu .= "<a href='index.php?page=adminmenu'>Admin menu</a>";
-        $menu .= "<a href='index.php?>page=test'>Test</a>";
     if (isset($_SESSION['login'])) {
         $menu .= "<a href='index.php?page=uitloggen>Uitloggen</a>";
     } else {
-        $menu .= "<a href='include/html/user/login.php?page=inloggen'>Inloggen</a>";
+        $menu .= "<a href='index.php?page=inloggen'>Inloggen</a>";
     }
 
 
@@ -43,34 +41,20 @@ function getPage()
     return $page;
 }
 
-function checkRole($role)
-{
-    // role: 0 - guest
-    // role: 1 - ingelogde gebruiker (nieuw)
-    // role: 2 - ingelogde gebruiker (klant)
-    // role: 3 - ingelogde gebruiker (medewerker)
-    // role: 8 - ingelogde gebruiker (beheerder)
-    // role: 9 - ingelogde gebruiker (admin)
-    if ($_SESSION['role'] >= $role) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 
 
 function getSection()
 {
     $page = getPage();
-    $section = "";
+    
     switch ($page) {
 
         case "home":
-            
+            $section = "dit is de home pagina";
             break;
         case "inloggen":
-            $section = "";
+            include("userfunctions.php");
+            $section = login();
             break;
         case "fietsen":
             include('fietsfunctions.php');
