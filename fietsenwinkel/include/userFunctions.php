@@ -1,4 +1,6 @@
 <?php
+include("dbfunctions.php");
+include("formfunctions.php");
 if (!isset($_SESSION['login'])) {
     $_SESSION['login'] = false;
     $_SESSION['username'] = "";
@@ -7,10 +9,11 @@ if (!isset($_SESSION['login'])) {
 
 function login()
 {
-    if (isset($_POST['inloggen'])) {
+    if(isset($_POST['inloggen'])) {
+
         $username = check_input($_POST['username']);
         $password = check_input($_POST['password']);
-        if (checkUserPassword($username, $password)) {
+    if (checkUserPassword($username, $password)) {
             echo "U bent ingelogd.";
             header('Refresh:2; url=index.php');
         } else {
@@ -48,7 +51,7 @@ function checkUser($username)
 function checkUserPassword($username, $password)
 {
     if (($username <> "") && ($password <> "")) {
-        $conn = include('dbfunctions.php');
+        $conn = dbConnect();
         $sql = "SELECT * FROM admin WHERE username='$username'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();

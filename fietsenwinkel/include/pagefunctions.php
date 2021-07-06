@@ -4,8 +4,7 @@ function getHeader()
     $header =  "Dit is de fietsen pagina";
     if (isset($_SESSION['login'])) {
         $username = $_SESSION['username'];
-        $role = $_SESSION['role'];
-        $header .= " - Welkom: $username ($role)";
+        $header .= " - Welkom: $username";
     }
     return $header;
 }
@@ -18,12 +17,11 @@ function getNav()
         $menu = "<a href='index.php'>Home</a>";
         $menu .= "<a href='index.php?page=fietsen'>Fietsen</a>";
         $menu .= "<a href='index.php?page=adminmenu'>Admin menu</a>";
-    if (isset($_SESSION['login'])) {
+        if ($_SESSION['login']) {
         $menu .= "<a href='index.php?page=uitloggen>Uitloggen</a>";
-    } else {
+        } else {
         $menu .= "<a href='index.php?page=inloggen'>Inloggen</a>";
     }
-
 
     return $menu;
 }
